@@ -18,6 +18,12 @@ func NewKeccak256() hash.Hash { return &state{rate: 136, outputLen: 32, dsbyte: 
 // NewKeccak512 creates a new Keccak-512 hash.
 func NewKeccak512() hash.Hash { return &state{rate: 72, outputLen: 64, dsbyte: 0x01} }
 
+// NewLegacyKeccak256 creates a new Keccak-256 hash.
+//
+// Only use this function if you require compatibility with an existing cryptosystem
+// that uses non-standard padding. All other users should use New256 instead.
+func NewLegacyKeccak256() hash.Hash { return &state{rate: 136, outputLen: 32, dsbyte: 0x01} }
+
 // New224 creates a new SHA3-224 hash.
 // Its generic security strength is 224 bits against preimage attacks,
 // and 112 bits against collision attacks.
